@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thank you!</title>
+    </head>
+    <body>
+
+        <h1></h1>
+        <span th:text="|Name: ${name}|"/><br />
+        <!-- Top 10 2013-A3-Cross-Site Scripting (XSS)
+            th:utext will display unescaped content, so if the user added address field with
+            <script>alert('This is Sparta! No, wait, it's not. This is XSS!');</script>
+            then viewing the page would generate an alert visible to the user.
+            Top 10 2013-A10-Unvalidated Redirects and Forwards
+            This can be also viewed as "unvalidated forward", as the user may put <a href="http://malicioussite.com">Click here!</a>
+            as the address.
+        -->
+        <span th:utext="|Address: ${address}|"/>
+
+
+    </body>
+</html>
